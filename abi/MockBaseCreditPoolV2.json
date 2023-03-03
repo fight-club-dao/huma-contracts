@@ -16,11 +16,6 @@
   },
   {
     "inputs": [],
-    "name": "permissionDeniedNotLender",
-    "type": "error"
-  },
-  {
-    "inputs": [],
     "name": "poolIsNotOn",
     "type": "error"
   },

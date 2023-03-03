@@ -129,7 +129,7 @@ abstract contract BasePool is Initializable, BasePoolStorage, ILiquidityProvider
 
     function _deposit(address lender, uint256 amount) internal {
         if (amount == 0) revert Errors.zeroAmountProvided();
-        _onlyApprovedLender(lender);
+        // _onlyApprovedLender(lender);
 
         if (_totalPoolValue + amount > _poolConfig.poolLiquidityCap())
             revert Errors.exceededPoolLiquidityCap();
