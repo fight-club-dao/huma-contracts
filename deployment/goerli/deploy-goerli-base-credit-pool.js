@@ -1,7 +1,7 @@
 const {deploy} = require("../utils.js");
 
-const HUMA_OWNER_ADDRESS='0x9BF210E167B7091A603EAbB5e02a367c50F1f971';
-const POOL_OWNER_ADDRESS='0x9BF210E167B7091A603EAbB5e02a367c50F1f971';
+const HUMA_OWNER_ADDRESS='0x81a943AE0218D70e7a82896ceC7E9c5ccD48663F';
+const POOL_OWNER_ADDRESS='0x14dC79964da2C08b23698B3D3cc7Ca32193d9955';
 
 async function deployContracts() {
     const network = (await hre.ethers.provider.getNetwork()).name;

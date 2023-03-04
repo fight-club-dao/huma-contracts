@@ -8,7 +8,7 @@ const {
 
 let deployer, deployedContracts, lender, ea, eaService, pdsService, treasury, ea_bcp;
 
-const HUMA_OWNER_ADRESS='0x9BF210E167B7091A603EAbB5e02a367c50F1f971';
+const HUMA_OWNER_ADRESS='0x81a943AE0218D70e7a82896ceC7E9c5ccD48663F';
 
 async function initHumaConfig() {
     const initilized = await getInitilizedContract("HumaConfig");
@@ -290,6 +290,7 @@ async function initContracts() {
     const accounts = await hre.ethers.getSigners();
     [deployer, proxyOwner, lender, ea, eaService, pdsService, treasury, ea_bcp] = await accounts;
     console.log("deployer address: " + deployer.address);
+    console.log("proxyOwner address: " + proxyOwner.address);
     console.log("lender address: " + lender.address);
     console.log("ea address: " + ea.address);
 
