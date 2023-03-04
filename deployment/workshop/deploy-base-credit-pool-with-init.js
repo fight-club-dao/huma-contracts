@@ -96,13 +96,13 @@ async function deployContracts() {
     if (initilized) {
         console.log("BaseCreditPoolConfig is already initialized!");
     } else {
-        await poolConfig.initialize(
-            "CreditLinePool",
-            hdt.address,
-            humaConfig.address,
-            feeManager.address
-        );
-        console.log("pause");
+        // await poolConfig.initialize(
+        //     "CreditLinePool",
+        //     hdt.address,
+        //     humaConfig.address,
+        //     feeManager.address
+        // );
+        // console.log("pause");
         const cap = BN.from(1_000_000).mul(BN.from(10).pow(BN.from(decimals)));
         console.log("cap: " + cap);
         await poolConfig.setPoolLiquidityCap(cap);
@@ -142,14 +142,14 @@ async function deployContracts() {
         await pool.addApprovedLender(treasury.address);
 
         const amountOwner = BN.from(20_000).mul(BN.from(10).pow(BN.from(decimals)));
-        await usdc.mint(treasury.address, amountOwner);
+        // await usdc.mint(treasury.address, amountOwner);
         await usdc.connect(treasury).approve(pool.address, amountOwner);
-        await pool.connect(treasury).makeInitialDeposit(amountOwner);
+        // await pool.connect(treasury).makeInitialDeposit(amountOwner);
         console.log("Enabling pool");
         const amountEA = BN.from(10_000).mul(BN.from(10).pow(BN.from(decimals)));
-        await usdc.mint(ea.address, amountEA);
+        // await usdc.mint(ea.address, amountEA);
         await usdc.connect(ea).approve(pool.address, amountEA);
-        await pool.connect(ea).makeInitialDeposit(amountEA);
+        // await pool.connect(ea).makeInitialDeposit(amountEA);
         await pool.enablePool();
         console.log("Pool is enabled");
 
