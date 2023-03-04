@@ -23,6 +23,10 @@ let goerliUrl = process.env["GOERLI_URL"];
 if (!goerliUrl) {
     goerliUrl = EMPTY_URL;
 }
+let sepoliaUrl = process.env["SEPOLIA_URL"];
+if (!sepoliaUrl) {
+    sepoliaUrl = EMPTY_URL;
+}
 let mumbaiUrl = process.env["MUMBAI_URL"];
 if (!mumbaiUrl) {
     mumbaiUrl = EMPTY_URL;
@@ -171,10 +175,10 @@ module.exports = {
             //     passphrase: "",
             // },
             // If you don't want to import all these private keys, just import your mnemonic phrase above
-            accounts: [deployer, treasury, eaService, pdsService, ea, proxyOwner, lender],
+            accounts: [deployer, treasury, eaService, pdsService, ea, proxyOwner],
         },
         sepolia: {
-            url: process.env.SEPOLIA_URL,
+            url: sepoliaUrl,
             // accounts: {
             //     mnemonic: process.env.MNEMONIC,
             //     path: "m/44'/60'/0'/0",

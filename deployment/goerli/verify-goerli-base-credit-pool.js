@@ -89,57 +89,59 @@ async function verifyContracts() {
         throw new Error("Accounts not set!");
     }
     deployer = await accounts[0];
-    proxyOwner = await accounts[1];
+    proxyOwner = await accounts[5];
     console.log("proxyOwner address: " + proxyOwner.address);
 
-    const verifyUsdc = await verifyContract('USDC');
-    console.log(`Verify USDC result: ${verifyUsdc}`);
+    // const verifyUsdc = await verifyContract('USDC');
+    // console.log(`Verify USDC result: ${verifyUsdc}`);
 
-    const verifyEANFT = await verifyContract('EANFT');
-    console.log(`Verify EANFT result: ${verifyEANFT}`);
+    // const verifyEANFT = await verifyContract('EANFT');
+    // console.log(`Verify EANFT result: ${verifyEANFT}`);
 
-    const verifyRNNFT = await verifyContract('RNNFT', [
-        `'${deployedContracts['USDC']}'`
-    ]);
-    console.log(`Verify RNNFT result: ${verifyRNNFT}`);
+    // const verifyRNNFT = await verifyContract('RNNFT', [
+    //     `'${deployedContracts['USDC']}'`
+    // ]);
+    // console.log(`Verify RNNFT result: ${verifyRNNFT}`);
 
     const verifyHumaConfig = await verifyContract('HumaConfig');
     console.log(`Verify HumaConfig result: ${verifyHumaConfig}`);
 
-    const verifyHumaConfigTL = await verifyContract('HumaConfigTimelock',
-        [
-            0,
-            `['${HUMA_OWNER_MULTI_SIG}']`,
-            `['${deployer.address}']`,
-        ]);
-    console.log(`Verify HumaConfigTimelock result: ${verifyHumaConfigTL}`);
+    // const verifyHumaConfigTL = await verifyContract('HumaConfigTimelock',
+    //     [
+    //         0,
+    //         `['${HUMA_OWNER_MULTI_SIG}']`,
+    //         `['${deployer.address}']`,
+    //     ]);
+    // console.log(`Verify HumaConfigTimelock result: ${verifyHumaConfigTL}`);
 
-    const verifyBaseCreditPoolTL = await verifyContract('BaseCreditPoolTimelock',
-        [
-            0,
-            `['${POOL_OWNER_MULTI_SIG}']`,
-            `['${deployer.address}']`,
-        ]);
-    console.log(`Verify HumaConfigTimelock result: ${verifyBaseCreditPoolTL}`);
+    // const verifyBaseCreditPoolTL = await verifyContract('BaseCreditPoolTimelock',
+    //     [
+    //         0,
+    //         `['${POOL_OWNER_MULTI_SIG}']`,
+    //         `['${deployer.address}']`,
+    //     ]);
+    // console.log(`Verify HumaConfigTimelock result: ${verifyBaseCreditPoolTL}`);
 
-    const verifyBaseCreditPoolProxyAdminTL = await verifyContract('BaseCreditPoolProxyAdminTimelock',
-        [
-            0,
-            `['${POOL_OWNER_MULTI_SIG}']`,
-            `['${deployer.address}']`,
-        ]);
-    console.log(`Verify HumaConfigTimelock result: ${verifyBaseCreditPoolProxyAdminTL}`);
+    // const verifyBaseCreditPoolProxyAdminTL = await verifyContract('BaseCreditPoolProxyAdminTimelock',
+    //     [
+    //         0,
+    //         `['${POOL_OWNER_MULTI_SIG}']`,
+    //         `['${deployer.address}']`,
+    //     ]);
+    // console.log(`Verify HumaConfigTimelock result: ${verifyBaseCreditPoolProxyAdminTL}`);
 
-    const verifyFeeManager = await verifyContract('BaseCreditPoolFeeManager');
-    console.log(`Verify FeeManager result: ${verifyFeeManager}`);
+    // const verifyFeeManager = await verifyContract('BaseCreditPoolFeeManager');
+    // console.log(`Verify FeeManager result: ${verifyFeeManager}`);
 
     const verifyHDTImpl = await verifyContract('BaseCreditHDTImpl');
     console.log(`Verify HDTImpl result: ${verifyHDTImpl}`);
 
+    
+
     const verifyHDT = await verifyContract('BaseCreditHDT',
         [
             `'${deployedContracts['BaseCreditHDTImpl']}'`,
-            `'${deployedContracts['BaseCreditPoolProxyAdminTimelock']}'`,
+            `'${proxyOwner.address}'`,
             '[]'
         ]);
     console.log(`Verify HDT result: ${verifyHDT}`);
@@ -147,16 +149,16 @@ async function verifyContracts() {
     const verifyPoolConfig = await verifyContract('BaseCreditPoolConfig');
     console.log(`Verify poolConfig result: ${verifyPoolConfig}`);
 
-    const verifyPoolImpl = await verifyContract('BaseCreditPoolImpl');
-    console.log(`Verify PoolImpl result: ${verifyPoolImpl}`);
+    // const verifyPoolImpl = await verifyContract('BaseCreditPoolImpl');
+    // console.log(`Verify PoolImpl result: ${verifyPoolImpl}`);
 
-    const verifyPool = await verifyContract('BaseCreditPool',
-        [
-            `'${deployedContracts['BaseCreditPoolImpl']}'`,
-            `'${deployedContracts['BaseCreditPoolProxyAdminTimelock']}'`,
-            '[]',
-        ]);
-    console.log(`Verify Pool result: ${verifyPool}`);
+    // const verifyPool = await verifyContract('BaseCreditPool',
+    //     [
+    //         `'${deployedContracts['BaseCreditPoolImpl']}'`,
+    //         `'${deployedContracts['BaseCreditPoolProxyAdminTimelock']}'`,
+    //         '[]',
+    //     ]);
+    // console.log(`Verify Pool result: ${verifyPool}`);
 }
 
 verifyContracts()
